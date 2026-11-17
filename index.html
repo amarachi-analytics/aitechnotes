@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AiTech Notes</title>
+<meta name="description" content="Simple, practical notes on technology, tools and learning.">
+<link rel="canonical" href="https://aitechnotes.com/">
+<meta property="og:site_name" content="AiTech Notes">
+<meta property="og:title" content="AiTech Notes">
+<meta property="og:description" content="Simple, practical notes on technology, tools and learning.">
+<meta property="og:url" content="https://aitechnotes.com/">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "AiTech Notes", "url": "https://aitechnotes.com/"}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">AiTech Notes</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="index.html" aria-current="page">Notes</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Notes that make learning easier</h1>
+    <p>Simple, practical notes on technology, tools and learning.</p>
+  </div>
+</section>
+<div class="wrap">
+  <div class="filters" role="group" aria-label="Filter posts by category">
+        <button class="chip" type="button" aria-pressed="true" data-cat="All">All</button>
+        <button class="chip" type="button" aria-pressed="false" data-cat="SPSS">SPSS</button>
+        <button class="chip" type="button" aria-pressed="false" data-cat="SQL">SQL</button>
+  </div>
+  <ul class="grid">
+      <li data-cat="SPSS">
+        <a class="card" href="posts/hypothesis-testing-in-spss.html">
+          <img class="thumb" src="images/spss-cover-640.webp" alt="" loading="lazy">
+          <div class="card-body">
+            <span class="tag">SPSS</span>
+            <h2>Hypothesis testing in SPSS: a step-by-step guide</h2>
+            <p>How to choose, run, interpret and report hypothesis tests in SPSS, with APA examples and common mistakes to avoid.</p>
+            <span class="meta">17 Nov 2026 &middot; 12 min read</span>
+          </div>
+        </a>
+      </li>
+      <li data-cat="SQL">
+        <a class="card" href="posts/sql-simplified-study-notes.html">
+          <img class="thumb" src="images/sql-cover-640.webp" alt="" loading="lazy">
+          <div class="card-body">
+            <span class="tag">SQL</span>
+            <h2>SQL simplified: study notes for beginners</h2>
+            <p>What SQL is, its three command types (DDL, DML, DCL), table schemas, flat tables vs star schema, and a short quiz.</p>
+            <span class="meta">17 Nov 2026 &middot; 9 min read</span>
+          </div>
+        </a>
+      </li>
+  </ul>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 AiTech Notes. All rights reserved.</span>
+    <span>Contact: <a href="mailto:hello@aitechnotes.com">hello@aitechnotes.com</a></span>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
