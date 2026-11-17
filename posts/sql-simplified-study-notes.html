@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL simplified: study notes for beginners | AiTech Notes</title>
+<meta name="description" content="What SQL is, its three command types (DDL, DML, DCL), table schemas, flat tables vs star schema, and a short quiz.">
+<link rel="canonical" href="https://aitechnotes.com/posts/sql-simplified-study-notes.html">
+<meta property="og:site_name" content="AiTech Notes">
+<meta property="og:title" content="SQL simplified: study notes for beginners | AiTech Notes">
+<meta property="og:description" content="What SQL is, its three command types (DDL, DML, DCL), table schemas, flat tables vs star schema, and a short quiz.">
+<meta property="og:url" content="https://aitechnotes.com/posts/sql-simplified-study-notes.html">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SQL simplified: study notes for beginners", "description": "What SQL is, its three command types (DDL, DML, DCL), table schemas, flat tables vs star schema, and a short quiz.", "datePublished": "2026-11-17", "author": {"@type": "Organization", "name": "AiTech Notes"}, "publisher": {"@type": "Organization", "name": "AiTech Notes"}, "mainEntityOfPage": "https://aitechnotes.com/posts/sql-simplified-study-notes.html"}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../index.html">AiTech Notes</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html" aria-current="page">Notes</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <article class="post">
+    <a class="back" href="../index.html">&larr; All posts</a>
+    <span class="tag">SQL</span>
+    <h1>SQL simplified: study notes for beginners</h1>
+    <p class="meta">By AiTech Notes &middot; <time datetime="2026-11-17">17 Nov 2026</time> &middot; 9 min read</p>
+    <img class="cover" src="../images/sql-cover.webp" alt="SQL (Structured Query Language) simplified study notes cover">
+    <nav class="toc" aria-label="On this page"><strong>In this note</strong><ol><li><a href="#1-what-is-sql">What is SQL?</a></li><li><a href="#2-the-three-main-categories-of-sql">The three main categories of SQL</a></li><li><a href="#3-modelling-real-world-problems-as-database-problems">Modelling real-world problems as database problems</a></li><li><a href="#4-creating-table-schemas">Creating table schemas</a></li><li><a href="#5-modelling-of-tables">Modelling of tables</a></li><li><a href="#6-test-your-understanding">Test your understanding</a></li></ol></nav>
+    <div class="content"><p>These notes explain what SQL is, the three main groups of SQL commands, how to turn a real-world problem into database tables, and two common ways of modelling data.</p><h2 id="1-what-is-sql">1. What is SQL?</h2><p>SQL stands for <strong>Structured Query Language</strong>.</p><ul><li>SQL is a language used to communicate with relational databases.</li><li>It is used to create, manage, retrieve, update and delete data in databases.</li><li>It lets users interact with the tables in a database.</li></ul><p><strong>Example:</strong> a school database can use SQL to store and manage student records, staff details, courses and classrooms.</p><h2 id="2-the-three-main-categories-of-sql">2. The three main categories of SQL</h2><h3>Data Definition Language (DDL)</h3><p>DDL defines or changes the structure of a database. It is commonly used by database administrators and database engineers.</p><div class="table-wrap"><table><thead><tr><th>Command</th><th>Function</th></tr></thead><tbody><tr><td>CREATE</td><td>Creates a database or table</td></tr><tr><td>ALTER</td><td>Modifies an existing table</td></tr><tr><td>DROP</td><td>Deletes a table or database structure</td></tr><tr><td>TRUNCATE</td><td>Removes all records from a table</td></tr></tbody></table></div><pre><code>CREATE TABLE Students (
+    Student_id INT PRIMARY KEY,
+    Firstname VARCHAR(255),
+    Lastname VARCHAR(255)
+);</code></pre><h3>Data Manipulation Language (DML)</h3><p>DML works with the data stored inside tables. It is commonly used by data analysts and database users, and it supports <strong>CRUD</strong> operations.</p><div class="table-wrap"><table><thead><tr><th>Letter</th><th>Meaning</th><th>SQL command</th></tr></thead><tbody><tr><td>C</td><td>Create</td><td>INSERT</td></tr><tr><td>R</td><td>Retrieve</td><td>SELECT</td></tr><tr><td>U</td><td>Update</td><td>UPDATE</td></tr><tr><td>D</td><td>Delete</td><td>DELETE</td></tr></tbody></table></div><pre><code>-- CREATE (insert a record)
+INSERT INTO Students
+(Student_id, Firstname, Lastname)
+VALUES (1, 'John', 'James');
+
+-- READ (retrieve records)
+SELECT * FROM Students;
+
+-- UPDATE (modify a record)
+UPDATE Students
+SET Firstname = 'Peter'
+WHERE Student_id = 1;
+
+-- DELETE (remove a record)
+DELETE FROM Students
+WHERE Student_id = 1;</code></pre><blockquote>Remember: in CRUD, Create means inserting a record, not creating a table.</blockquote><h3>Data Control Language (DCL)</h3><p>DCL controls access and permissions. It is commonly handled by database administrators and database engineers.</p><ul><li><strong>GRANT</strong> gives a user permission to access or perform certain operations on a database.</li><li><strong>REVOKE</strong> removes permissions that were granted before.</li></ul><pre><code>GRANT SELECT ON Students TO analyst;
+
+REVOKE SELECT ON Students FROM analyst;</code></pre><h2 id="3-modelling-real-world-problems-as-database-problems">3. Modelling real-world problems as database problems</h2><p>Database modelling means taking information from a real-world situation and organising it into tables.</p><p><strong>Example:</strong> a tech academy wants a database called <code>academy_db</code> to manage students, staff, courses and classrooms. Each of these becomes a table.</p><h2 id="4-creating-table-schemas">4. Creating table schemas</h2><p>A table schema describes the structure of a table: its columns, data types and constraints.</p><h3>Students table</h3><div class="table-wrap"><table><thead><tr><th>Column</th><th>Data type</th><th>Constraint</th></tr></thead><tbody><tr><td>Student_id</td><td>INT</td><td>PRIMARY KEY</td></tr><tr><td>Firstname</td><td>VARCHAR(255)</td><td></td></tr><tr><td>Lastname</td><td>VARCHAR(255)</td><td></td></tr><tr><td>Gender</td><td>VARCHAR(10)</td><td></td></tr><tr><td>Phonenumber</td><td>TEXT</td><td></td></tr><tr><td>Age</td><td>INT</td><td></td></tr><tr><td>Course_id</td><td>INT</td><td>FOREIGN KEY</td></tr></tbody></table></div><h3>Courses table</h3><div class="table-wrap"><table><thead><tr><th>Column</th><th>Data type</th><th>Constraint</th></tr></thead><tbody><tr><td>Course_id</td><td>INT</td><td>PRIMARY KEY</td></tr><tr><td>Title</td><td>TEXT</td><td></td></tr></tbody></table></div><h3>Understanding the relationship</h3><ul><li>Student_id uniquely identifies each student.</li><li>Course_id uniquely identifies each course.</li><li>Course_id in the Students table is a foreign key that references the Courses table.</li></ul><p><strong>Courses</strong></p><div class="table-wrap"><table><thead><tr><th>Course_id</th><th>Title</th></tr></thead><tbody><tr><td>1</td><td>Data Analysis</td></tr><tr><td>2</td><td>Web Development</td></tr><tr><td>3</td><td>Cybersecurity</td></tr></tbody></table></div><p><strong>Students</strong></p><div class="table-wrap"><table><thead><tr><th>Student_id</th><th>Firstname</th><th>Course_id</th></tr></thead><tbody><tr><td>101</td><td>John</td><td>1</td></tr><tr><td>102</td><td>Mary</td><td>2</td></tr><tr><td>103</td><td>David</td><td>1</td></tr></tbody></table></div><p>John and David are enrolled in Data Analysis, while Mary is enrolled in Web Development.</p><h3>SQL implementation</h3><pre><code>CREATE TABLE Courses (
+    Course_id INT PRIMARY KEY,
+    Title TEXT
+);
+
+CREATE TABLE Students (
+    Student_id INT PRIMARY KEY,
+    Firstname VARCHAR(255),
+    Lastname VARCHAR(255),
+    Gender VARCHAR(10),
+    Phonenumber TEXT,
+    Age INT,
+    Course_id INT,
+    FOREIGN KEY (Course_id)
+    REFERENCES Courses(Course_id)
+);</code></pre><p>Create the Courses table first, because the Students table refers to it.</p><h2 id="5-modelling-of-tables">5. Modelling of tables</h2><p>There are two common modelling approaches.</p><h3>A. Flat table modelling</h3><p>All the information is stored in one table.</p><div class="table-wrap"><table><thead><tr><th>Student_id</th><th>Student_name</th><th>Course</th><th>Staff</th><th>Classroom</th></tr></thead><tbody><tr><td>1</td><td>John</td><td>SQL</td><td>Mr James</td><td>Room A</td></tr><tr><td>2</td><td>Mary</td><td>Python</td><td>Mrs Grace</td><td>Room B</td></tr><tr><td>3</td><td>David</td><td>SQL</td><td>Mr James</td><td>Room A</td></tr></tbody></table></div><p><strong>Advantages</strong></p><ul><li>Easy to understand.</li><li>Simple for small datasets.</li><li>Related information is easy to view together.</li></ul><p><strong>Disadvantages</strong></p><ul><li>Data is repeated.</li><li>Hard to maintain as the data grows.</li><li>Can lead to inconsistencies.</li></ul><h3>B. Star schema modelling</h3><p>In a star schema, a central <strong>fact table</strong> connects to several <strong>dimension tables</strong>.</p><ul><li><strong>Fact table:</strong> stores measurable events or transactions, such as student enrolments.</li><li><strong>Dimension tables:</strong> store descriptive information, such as students, courses, staff and classrooms.</li></ul><pre><code>             Students
+                 |
+                 |
+Courses ---- Enrolments ---- Staff
+                 |
+                 |
+             Classrooms</code></pre><p><strong>Advantages</strong></p><ul><li>Makes reporting and analysis easier.</li><li>Reduces unnecessary repetition in analytical datasets.</li><li>Helps organise large amounts of data.</li><li>Useful for business intelligence and data warehousing.</li></ul><h2 id="6-test-your-understanding">6. Test your understanding</h2><p>Try each question first, then open the answer.</p><ol class="quiz"><li><strong>What does SQL stand for?</strong><ul><li>Structured Query Language</li><li>Simple Question Language</li><li>System Query Logic</li></ul><details><summary>Show answer</summary><p>Structured Query Language</p></details></li><li><strong>Which SQL category is used to create and modify table structures?</strong><ul><li>DML</li><li>DDL</li><li>DCL</li></ul><details><summary>Show answer</summary><p>DDL</p></details></li><li><strong>Which command retrieves records from a table?</strong><ul><li>INSERT</li><li>UPDATE</li><li>SELECT</li></ul><details><summary>Show answer</summary><p>SELECT</p></details></li><li><strong>What does CRUD stand for?</strong><ul><li>Create, Read, Update, Delete</li><li>Create, Remove, Undo, Drop</li><li>Copy, Retrieve, Update, Display</li></ul><details><summary>Show answer</summary><p>Create, Read, Update, Delete</p></details></li><li><strong>What is the central table in a star schema called?</strong><ul><li>Dimension table</li><li>Fact table</li><li>Flat table</li></ul><details><summary>Show answer</summary><p>Fact table</p></details></li></ol></div>
+    <p class="report">Spotted a mistake in this note? <a href="mailto:hello@aitechnotes.com?subject=Correction%3A%20SQL%20simplified%3A%20study%20notes%20for%20beginners">Tell us</a> and we will fix it.</p>
+    <aside class="related">
+      <h2>More notes</h2>
+      <ul>
+      <li><a href="hypothesis-testing-in-spss.html">Hypothesis testing in SPSS: a step-by-step guide</a></li>
+      </ul>
+    </aside>
+  </article>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 AiTech Notes. All rights reserved.</span>
+    <span>Contact: <a href="mailto:hello@aitechnotes.com">hello@aitechnotes.com</a></span>
+  </div>
+</footer>
+<script src="../site.js"></script>
+</body>
+</html>
